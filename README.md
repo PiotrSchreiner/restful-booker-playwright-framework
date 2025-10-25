@@ -1,42 +1,37 @@
-# restful-booker-platform
-A platform of web services that forms a Bed and Breakfast booking system. The platforms primary purpose is for  training others on how to explore and test web service platforms as well as strategise and implement automation in testing strategies.
+# 🛠️ Testautomatisierungs-Framework: Restful Booker (UI)
 
-## Requirements
-RBP is currently known to work with the following requirements:
+Dieses Projekt demonstriert einen professionellen Ansatz zur **UI-Testautomatisierung** der **Restful-Booker-Platform** (RBPM) unter Verwendung des **Java**-Stacks und des **Playwright**-Frameworks.
 
-- JDK 21.0.5 or higher (Tested with JDK 21)
-- Maven 3.6.3
-- Node 22.14.0
-- NPM 10.9.2
+Die Architektur folgt den modernen Enterprise-Prinzipien des **Lightweight Page Object Model (POM)** in Kombination mit **App Actions/Service-Layern**, basierend auf den Empfehlungen der Playwright-Community und der ISTQB-Testautomatisierungsstandards.
 
-## Building locally
+## 🎯 Architektur & Prinzipien
 
-Assuming you have the above requirements in place, to get started open a terminal/command line window and follow these instructions:
+| Pattern                                 | Zweck                                                                                                                       | Umsetzung in Java                                                                   |
+| :-------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| **Lightweight Page Object Model (POM)** | [cite_start]Zentrale Pflege aller **Locators** und einfacher Seiteninteraktionen. [cite: 577, 594]                          | **`src/main/java/pages`** (Klassen wie `LoginPage.java`, `BookingPage.java`)        |
+| **App Actions / Service Layer**         | [cite_start]Bündelung komplexer, domänenübergreifender **Geschäftslogik** (z. B. `loginAndCreateBooking`). [cite: 584, 595] | **`src/main/java/actions`** (Klassen wie `AuthActions.java`, `BookingActions.java`) |
+| **Test Cases**                          | Klar definierte Testfälle, die die App Actions nutzen und Assertions enthalten (z. B. `testBookingCreation`).               | **`src/test/java/tests`** (Klassen wie `BookingTests.java`)                         |
 
-1. Clone/Download the repository
-2. Navigate into the restful-booker-platform root folder
-3. Run either ```bash build_locally.sh``` for Linux or Mac or ```build_locally.cmd``` on Windows to build RBP and get it running (It may take a while on the first run as it downloads dependencies)
-4. Navigate to http://localhost:8080 to access the site
+## 📦 Technologie-Stack
 
-## Running locally
+- **Sprache:** Java (mit JDK 17 oder höher)
+- **Build-Tool:** Maven
+- **UI-Automatisierung:** Microsoft Playwright (Java Binding)
+- **Test-Runner:** JUnit 5 (Jupiter)
+- **Basis-Anwendung:** Restful-Booker-Platform (lokal via Docker Compose)
 
-Assuming you have successfully built the application at least once, you can now run the app without having to rebuild the whole application.
+## 🚀 Quick Start (Ausführung)
 
-### Mac / Linux
-1. To run without end-to-end checks run: ```run_locally.sh```
-2. To run with end-to-end checks run: ```run_locally.sh -e true```
+### Voraussetzungen
 
-### Windows
-1. To run without end-to-end checks run: ```run_locally.cmd```
-2. To run with end-to-end checks run: ```run_locally.cmd true```
+1.  **Java JDK:** Installation von Java Development Kit (mindestens Version 17).
+2.  **Maven:** Installation des Apache Maven Build-Tools.
+3.  **Docker Compose:** Installiert und gestartet, um die Restful-Booker-Platform bereitzustellen.
 
-### Login
-The user login details are:
-* Username: admin
-* Password: password
+### 1. Anwendung starten
 
-## Development
+Da das Repository bereits die **Docker Compose Konfiguration** enthält, kann die Testumgebung einfach gestartet werden:
 
-### API details
-
-The details on running checks, building APIs and additional details on documentation for development can be found in READMEs inside each of the API folders.
+```bash
+docker compose up -d --build
+```
